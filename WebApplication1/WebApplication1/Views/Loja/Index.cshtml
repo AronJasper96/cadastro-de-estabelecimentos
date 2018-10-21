@@ -1,0 +1,42 @@
+﻿@using WebApplication1.Models
+@model IEnumerable<Lojas>
+
+@{
+    ViewBag.Title = "Lojas";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h4>Lista de lojas</h4>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Razão Social</th>
+                    <th>Nome Fantasia</th>
+                    <th>E-mail</th>
+                    <th>Telefone</th>
+                    <th>Cidade/Estado</th>
+                    <th>Situação</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Lojas loja in Model)
+                {
+                    <tr>
+                        <td>@loja.RazaoSocial</td>
+                        <td>@loja.NomeFantasia</td>
+                        <td>@loja.Email</td>
+                        <td>@loja.Telefone</td>
+                        <td>@loja.Cidade / @loja.Esatado</td>
+                        <td>@(loja.Ativo == true ? "Ativo" : "Inativo")</td>
+                        <td class="text-center">
+                            <a href="@Url.Action("MudarSituacao", "Loja", new { Id = loja.Id })"><i class="glyphicon glyphicon-@(loja.Ativo == true ? "remove" : "check")"></i></a> | 
+                            <a href="@Url.Action("Excluir", "Loja", new { Id = loja.Id })"><i class="glyphicon glyphicon-trash"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Cadastro</h2>
+
+
+
+<div class="row">
+    <form id="form-loja">
+        <div class="col-lg-offset-3 col-lg-6">
+            <div class="form-group">
+                <label>Razão Social</label>
+                <input name="razao" type="text" required class="form-control" />
+            </div>
+            <div class="form-group">
+                <label >Nome Fantasia</label>
+                <input name="fantasia" type="text" required class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Cnpj</label>
+                <input name="cnpj" type="text" required class="form-control cnpj" />
+            </div>
+            <div class="form-group">
+                <label>E-mail</label>
+                <input name="email" type="email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Endereço</label>
+                <input name="endereco" type="text" required class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Cidade</label>
+                <input name="cidade" type="text" required class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Estado</label>
+                <input name="estado" type="text" required class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Telefone</label>
+                <input name="telefone" type="text" required class="form-control tel" />
+            </div>
+            <div class="form-group">
+                <label>Agência</label>
+                <input name="agencia" type="text" required class="form-control ag" />
+            </div>
+            <div class="form-group">
+                <label>Conta</label>
+                <input name="conta" type="text" required class="form-control cc" />
+            </div>
+            <div class="form-group">
+                <label>Categoria</label>
+                <select class="form-control" name="idCategoria">
+                    <option value="1">Supermercado</option>
+                    <option value="2">Restaurante</option>
+                    <option value="3">Borracharia</option>
+                    <option value="4">Posto</option>
+                    <option value="5">Oficina</option>
+                    <option></option>
+                </select>
+            </div>
+            <input class="btn btn-primary" value="Salvar
+                   " type="submit" />
+        </div>
+    </form>
+   </div>
+
+<script>
+    $('#form-loja').submit(function () {
+        $.ajax({
+            url: '/loja/inserir',
+            type: 'post',
+            data: $(this).serialize(),
+            success: function () {
+                window.location = '/loja'
+            }
+
+        })
+        return false;
+    })
+</script>
